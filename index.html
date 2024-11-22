@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <style>
+    
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+
+    header {
+      background-color: #D1751C;
+      box-shadow: 10px 0px 10px #F51616;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    nav {
+      position: fixed;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 6rem;
+    }
+
+    .logo {
+      display: flex;
+      color: #D1751C;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    span {
+      color: #17E7E5;
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .nav-list ul {
+      margin: 0 15px;
+      display: flex;
+    }
+
+    .nav-itens {
+      color: #E419C1;
+      list-style: none;
+      margin: 0 15px;
+    }
+
+    .nav-itens a {
+      transition: transform 0.3s;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color:#17E7E5;
+      font-weight: 400;
+    }
+
+    .login-button {
+      width: 150px;
+      height: 40px;
+      border-radius: 40px;
+      background: #D1751C;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-button a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .nav-list ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .nav-itens {
+        margin: 0.5rem 0;
+      }
+
+      .login-button {
+        margin-top: 1rem;
+      }
+    }
+
+    .menu-icon {
+      display: none;
+    }
+
+    @media screen and (max-width: 480px) {
+      .menu-icon {
+        display: flex;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+      }
+
+      .nav-bar {
+        padding: 0.5rem;
+      }
+
+      .nav-list ul {
+        margin-top: 0.5rem;
+      }
+
+      .nav-itens {
+        font-size: 0.9rem;
+        margin: 0.3rem 0;
+      }
+
+      .login-button {
+        padding: 10px 15px;
+      }
+    }
+
+    .descricao-imagem {
+      margin-top: 15px;
+      background-image:url('/pics/modelos 1.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .img-header:hover {
+      transform: scale(1.2);
+    }
+
+    .img-header {
+      transition: transform 0.3s;
+      height: 580px; /* altura fixa para evitar movimentação */
+      display: flex;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+    }
+
+    h2 {
+      margin-top: 100px;
+      width: 50%;
+      margin-right: 20px;
+      font-weight: 400;
+      font-size: 30px;
+      color: #17E7E5;
+    }
+
+    .gallery {
+      text-align: center;
+      font-size: 35px;
+      background-color: #fff;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .image-container {
+      margin: 0 auto;
+      width: 80%;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.30), 0 11px 8px rgba(0, 0, 0, 0.22);
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+
+    .preco-descricao {
+      padding: 0 15px 15px 15px;
+      text-align: center;
+      color: black;
+      font-weight: bolder;
+      font-size: 30px;
+    }
+
+    .sobre {
+      color: #fff;
+      text-align: center;
+      background-color: #D1751C;
+      justify-content: space-between;
+      padding: 2rem 6rem;
+    }
+
+    .contacto {
+      padding: 2rem 6rem;
+      background-color: gray;
+      color: #333;
+    }
+
+    .contacto h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .contact-info,
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      margin: 1rem;
+      padding: 1rem;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .contact-info h2,
+    .contact-form h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .contact-form button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #D1751C;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #b95f0a;
+    }
+
+    @media screen and (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-info,
+      .contact-form {
+        margin: 1rem 0;
+      }
+    }
+
+    .products {
+      padding: 2rem 6rem;
+      background-color: #fff;
+    }
+
+    h4 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #D47E15FA;
+    }
+
+    .gallery {
+      text-align: center;
+      font-size: 35px;
+      margin-bottom: 2rem;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .image-item {
+      flex: 1 1 calc(25% - 20px); /* Ajusta para ter 4 itens por linha */
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.30), 0 11px 8px rgba(0, 0, 0, 0.22);
+      margin-bottom: 20px;
+      background-color: #f8f8f8;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .preco-descricao {
+      padding: 15px;
+      text-align: center;
+      color: #333;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .btn- {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #17E7E5;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-:hover {
+      background-color: #b95f0a;
+    }
+
+    @media screen and (max-width: 768px) {
+      .image-item {
+        flex: 1 1 calc(50% - 20px); /* Ajusta para ter 2 itens por linha em tablets */
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .image-item {
+        flex: 1 1 100%; /* Ajusta para ter 1 item por linha em celulares */
+      }
+    }
+
+    footer {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background-color: gray;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    footer h6 {
+      font-size: 35px;
+      color: #fff;
+    }
+
+    footer p {
+      color: #fff;
+      font-size: 15px;
+      width: 500px;
+      text-align: center;
+      margin-top: 15px;
+      letter-spacing: 3px;
+      line-height: 23px;
+    }
+
+    .Redes-sociais {
+      display: flex;
+    }
+
+    .Redes-sociais a {
+      background-color: #08D0E7;
+      width: 45px;
+      height: 45px;
+      padding: 15px;
+      border-radius: 50%;
+      margin: 22px 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    .Redes-sociais a:hover {
+      transform: scale(1.2);
+      transition: .3s;
+    }
+
+    ul {
+      background-color: #0c14139a;
+    }
+
+    .cart {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 1000;
+    }
+
+    .cart h3 {
+      margin-bottom: 10px;
+    }
+
+    .cart-item {
+      margin-bottom: 10px;
+    }
+
+    .cart-total {
+      font-weight: bold;
+    }
+  </style>
+  <title>MozFashionHub</title>
+</head>
+<body>
+  <header>
+    <nav class="nav-bar">
+      <div class="logo">
+        <h1>Moz<span>Fashion</span>Hub</h1>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-itens"><a class="nav-link" href="#Home">Home</a></li>
+        <li class="nav-itens"><a class="nav-link" href="#Produtos">Produtos</a></li>
+        <li class="nav-itens"><a class="nav-link" href="#Sobre">Sobre</a></li>
+        <li class="nav-itens"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+      <li class="nav-itens"><img src="pics/cart-2.png" alt="cart" id="cart-icon"></li>
+      <div class="login-button">
+        <a class="link-button" href="login.html">Login</a>
+      </div>
+      <div>
+        <img class="menu-icon" src="pics/icons8-menu-30.png" id="icon-toggle">
+      </div>
+    </nav>
+  </header>
+
+  <div class="descri">
+    <div class="descricao-imagem" id="Home" >
+      <h2>Bem-vindo ao Moz Fashion Hub, o destino para os fashionistas modernos que buscam expressar sua individualidade com estilo. <br> Venha nos visitar e descubra por que somos o ponto de encontro da moda em Moçambique.</h2>
+      <img id="img-header" class="img-header" src="pics/background-login.jpeg" alt="img-header">
+    </div>
+  </div>
+
+  <section class="products" id="Produtos">
+    <div class="gallery">
+      <h1>Produtos</h1>
+      <h4>Homens</h4>
+      <div class="image-container" id="men-products">
+        <div class="image-item">
+          <img src="pics/clothes 1.jpg" alt="Clothes 1">
+          <p class="preco-descricao">Camisas Nivaldo Thierry🥶 preço-5000MZN</p>
+          <button class="btn-" data-id="1" data-name="Camisas Nivaldo Thierry🥶" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+        <div class="image-item">
+          <img src="pics/clothes 2.jpg" alt="Clothes 2">
+          <p class="preco-descricao">Camisas Nivaldo Thierry😵 preço-5000MZN</p>
+          <button class="btn-" data-id="2" data-name="Camisas Nivaldo Thierry😵" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+        <div class="image-item">
+          <img src="pics/clothes 3.jpg" alt="Clothes 3">
+          <p class="preco-descricao">Camisas Nivaldo Thierry🥵 preço-5000MZN</p>
+          <button class="btn-" data-id="3" data-name="Camisas Nivaldo Thierry🥵" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+        <div class="image-item">
+          <img src="pics/Man cloth 5.jpg" alt="Clothes 4">
+          <p class="preco-descricao">Camisas Nivaldo Thierry 🔥 preço-5000MZN</p>
+          <button class="btn-" data-id="4" data-name="Camisas Nivaldo Thierry 🔥" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      <h4>Mulheres</h4>
+      <div class="image-container" id="women-products">
+        <div class="image-item">
+          <img src="pics/fem choth1.jpg" alt="Clothes 1">
+          <p class="preco-descricao">Camisas Nivaldo Thierry🥶 preço-5000MZN</p>
+          <button class="btn-" data-id="5" data-name="Camisas Nivaldo Thierry🥶" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+        <div class="image-item">
+          <img src="pics/fem choth2.jpg" alt="Clothes 2">
+          <p class="preco-descricao">Camisas Nivaldo Thierry😵 preço-5000MZN</p>
+          <button class="btn-" data-id="6" data-name="Camisas Nivaldo Thierry😵" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+        <div class="image-item">
+          <img src="pics/fem choth5.jpg" alt="Clothes 3">
+          <p class="preco-descricao">Camisas Nivaldo Thierry🥵 preço-3600MZN</p>
+          <button class="btn-" data-id="7" data-name="Camisas Nivaldo Thierry🥵" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+        <div class="image-item">
+          <img src="pics/fem choth4.jpg" alt="Clothes 4">
+          <p class="preco-descricao">Camisas Nivaldo Thierry 🔥 preço-4000MZN</p>
+          <button class="btn-" data-id="8" data-name="Camisas Nivaldo Thierry 🔥" data-price="5000">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre" id="Sobre">
+    <h1>Sobre Nós</h1>
+    <h3>A Moz<span>Fashion</span>Hub é uma loja totalmente Digital que traz todo tipo de vestimenta para todas ocasiões desde o formal ao casual atendendo de forma satisfatória as necessidades dos nossos Clientes.</h3>
+  </section>
+
+  <section class="contacto" id="contato">
+    <h1>Contato</h1>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Informações de Contato</h2>
+        <p>Email: @mozfashionhub.com</p>
+        <p>Telefone: +258 87 260 5987</p>
+        <p>Endereço</p>
+      </div>
+      <div class="contact-form">
+        <h2>Envie-nos uma mensagem</h2>
+        <form action="/send-message" method="post">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="message">Mensagem:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h6>Moz<span>Fashion</span>Hub</h6>
+    <p>Para mais informações sobre os meus serviços - por favor clique no link siga-me nas Redes sociais</p>
+    <div class="Redes-sociais">
+      <a href="https://www.facebook.com/profile.php?id=61560412650735">
+        <img src="pics/fb icon.webp" alt="Facebook">
+      </a>
+      <a href="https://wa.me/872605987">
+        <img src="pics/WhatsApp icon-1.webp" alt="WhatsApp">
+      </a>
+      <a href="https://github.com/Lazaromachava01">
+        <img src="pics/github icon.webp" alt="GitHub">
+      </a>
+    </div>
+    <p class="fim">CopyRight By Lazaro Machava</p>
+  </footer>
+
+  <!-- Carrinho de Compras -->
+  <div class="cart" id="cart">
+    <h3>Carrinho de Compras</h3>
+    <div id="cart-items"></div>
+    <p class="cart-total">Total: <span id="cart-total">0</span> MZN</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Toggle mobile menu
+  const mobileMenu = document.getElementById('icon-toggle');
+  const navList = document.querySelector('.nav-list');
+  mobileMenu.addEventListener('click', function() {
+    navList.classList.toggle('show');
+  });
+
+  // Carousel functionality
+  const imgHeader = document.getElementById('img-header');
+  const productImages = [
+    'pics/modelos 1.jpg',
+    'MozFashionHub/pics/modelos 2.jpg',
+    'MozFashionHub/pics/clothes 1.jpg',
+    'MozFashionHub/pics/clothes 3.jpg'
+  ];
+  let currentIndex = 0;
+
+  imgHeader.addEventListener('touchstart', handleTouchStart, false);
+  imgHeader.addEventListener('touchmove', handleTouchMove, false);
+
+  let xDown = null;
+  let yDown = null;
+
+  function handleTouchStart(evt) {
+    const firstTouch = evt.touches[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }
+
+  function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
+      return;
+    }
+
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
+
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        currentIndex = (currentIndex + 1) % productImages.length;
+      } else {
+        currentIndex = (currentIndex - 1 + productImages.length) % productImages.length;
+      }
+      imgHeader.src = productImages[currentIndex];
+    }
+
+    xDown = null;
+    yDown = null;
+  }
+
+  // Fetch and display products (simulated)
+  const menProductsContainer = document.getElementById('men-products');
+  const womenProductsContainer = document.getElementById('women-products');
+
+  const products = [
+    { id: 1, image_path: 'pics/clothes 1.jpg', name: 'Camisas Nivaldo Thierry🥶', description: 'preço-5000MZN', price: 5000, category: 'Men' },
+    { id: 2, image_path: 'pics/clothes 2.jpg', name: 'Camisas Nivaldo Thierry😵', description: 'preço-5000MZN', price: 5000, category: 'Men' },
+    { id: 3, image_path: 'pics/clothes 3.jpg', name: 'Camisas Nivaldo Thierry🥵', description: 'preço-5000MZN', price: 5000, category: 'Men' },
+    { id: 4, image_path: 'pics/Man cloth 5.jpg', name: 'Camisas Nivaldo Thierry 🔥', description: 'preço-5000MZN', price: 5000, category: 'Men' },
+    { id: 5, image_path: 'pics/fem choth1.jpg', name: 'Camisas Nivaldo Thierry🥶', description: 'preço-5000MZN', price: 5000, category: 'Women' },
+    { id: 6, image_path: 'pics/fem choth2.jpg', name: 'Camisas Nivaldo Thierry😵', description: 'preço-5000MZN', price: 5000, category: 'Women' },
+    { id: 7, image_path: 'pics/fem choth5.jpg', name: 'Camisas Nivaldo Thierry🥵', description: 'preço-3600MZN', price: 3600, category: 'Women' },
+    { id: 8, image_path: 'pics/fem choth4.jpg', name: 'Camisas Nivaldo Thierry 🔥', description: 'preço-4000MZN', price: 4000, category: 'Women' }
+  ];
+
+  products.forEach(product => {
+    const productElement = document.createElement('div');
+    productElement.classList.add('image-item');
+    productElement.innerHTML = `
+      <img src="${product.image_path}" alt="${product.name}">
+      <p class="preco-descricao">${product.name} ${product.description}</p>
+      <button class="btn-" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Adicionar ao Carrinho</button>
+    `;
+    if (product.category === 'Men') {
+      menProductsContainer.appendChild(productElement);
+    } else if (product.category === 'Women') {
+      womenProductsContainer.appendChild(productElement);
+    }
+  });
+
+  // Add event listeners to add-to-cart buttons
+  const addToCartButtons = document.querySelectorAll('.btn-');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const productId = this.dataset.id;
+      const productName = this.dataset.name;
+      const productPrice = parseFloat(this.dataset.price);
+      addToCart(productId, productName, productPrice);
+    });
+  });
+
+  // Cart functionality
+  const cartIcon = document.getElementById('cart-icon');
+  const cart = document.getElementById('cart');
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  const cartItems = [];
+
+  cartIcon.addEventListener('click', function() {
+    cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+  });
+
+  function addToCart(id, name, price) {
+    const existingItem = cartItems.find(item => item.id === id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cartItems.push({ id, name, price, quantity: 1 });
+    }
+    updateCart();
+  }
+
+  function updateCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+    cartItems.forEach(item => {
+      total += item.price * item.quantity;
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <p>${item.name} - ${item.price} MZN x ${item.quantity}</p>
+        <button class="remove-item" data-id="${item.id}">Remover</button>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+
+      cartItem.querySelector('.remove-item').addEventListener('click', function() {
+        removeFromCart(item.id);
+      });
+    });
+    cartTotal.textContent = total.toFixed(2);
+  }
+
+  function removeFromCart(id) {
+    cartItems = cartItems.filter(item => item.id !== id);
+    updateCart();
+  }
+});
+
+  </script>
+</body>
+</html>

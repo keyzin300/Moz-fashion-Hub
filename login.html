@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <style>
+    /* Adicione aqui seu CSS */
+    .form-box {
+      position: relative;
+      width: 400px;
+      height: 450px;
+      background: #0B1718B5;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      top: 50%;
+      transform: translateY(50%);
+    }
+
+    h2 {
+      font-size: 2em;
+      color: #0BD6DC;
+      text-align: center;
+    }
+
+    .inputbox {
+      position: relative;
+      margin: 20px 0;
+      width: 310px;
+      border-bottom: 2px solid #0BD6DC;
+    }
+
+    .inputbox label {
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 1em;
+      transition: .5s;
+    }
+
+    input:focus~label,
+    input:valid~label {
+      top: -5px;
+    }
+
+    .inputbox input {
+      width: 100%;
+      height: 50px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 1em;
+      padding: 0 35px 0 5px;
+      color: #fff;
+    }
+
+    .log button {
+      width: 100%;
+      height: 40px;
+      border-radius: 40px;
+      background: #fff;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      color: #0BD6DC;
+    }
+
+    .register {
+      font-size: .9em;
+      color: #fff;
+      text-align: center;
+      margin: 25px 0 10px;
+    }
+
+    .register p a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .register p a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      color: red;
+      text-align: center;
+    }
+
+    .success {
+      color: green;
+      text-align: center;
+    }
+  </style>
+  <title>Login</title>
+</head>
+<body>
+  <section>
+    <div class="form-box">
+      <div class="form-value">
+        <form action="login.php" method="POST">
+          <h2>Logar</h2>
+          <?php if (isset($_GET['error'])): ?>
+            <p class="message"><?php echo htmlspecialchars($_GET['error']); ?></p>
+          <?php endif; ?>
+          <?php if (isset($_GET['success'])): ?>
+            <p class="success"><?php echo htmlspecialchars($_GET['success']); ?></p>
+          <?php endif; ?>
+          <div class="inputbox">
+            <input type="text" name="username" required>
+            <label for="">Nome do usuário</label>
+          </div>
+          <div class="inputbox">
+            <input type="password" name="password" required>
+            <label for="">Palavra-passe</label>
+          </div>
+         
+          <div class="log">
+            <button type="submit">Logar</button>
+          </div>
+          <div class="register">
+            <p>Não tenho uma Conta <a href="register.html">Registar-se</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
